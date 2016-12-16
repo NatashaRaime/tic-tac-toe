@@ -30,8 +30,8 @@ Player.prototype.shuffle = function(){
 };
 
 
-// var P1 = new Player();
-// var P2 = new Player();
+const P1 = new Player();
+const P2 = new Player();
 
 
 

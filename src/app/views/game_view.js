@@ -15,6 +15,7 @@ var Game = function(){
   this.currentHash = {};
 
   if (name1!== null){
+    //made P1 and P2 const within the player file
     this.P1 = new Player();
     this.P1.name = name1;
     this.P1.mark = "X";
@@ -78,9 +79,9 @@ Game.prototype.endGame = function(){
   }
 };
 
-Game.prototype.exit = function () {
-  //refresh the players, refresh board refresh game
-};
+// Game.prototype.exit = function () {
+//   //refresh the players, refresh board refresh game
+// };
 
 // Game.prototype.checkStatus = function () {
 //   if (this.currentHash === {}) {
@@ -119,7 +120,7 @@ Game.prototype.exit = function () {
   // if(this.nextPlay === true){
   //     playerAction();
   // }
-};
+
 
 Game.prototype.fillName = function () {
   //show players names on the game page
