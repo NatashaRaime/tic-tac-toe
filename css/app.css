@@ -1,17 +1,18 @@
-.tic-tac-toe{
+/*.tic-tac-toe{
   margin: 5px 10px;
   font: italic 40px/20px serif, Georgia;
 }
 
-a, .btn-success:hover{
+.btn:hover{
   background-color: #99E2EE;
   border-color: #C5C4C2;
   color: #B3B2A9;
   font: italic 15px Georgia;
 }
 
-a, .btn-success{
+.btn{
   display: inline-block;
+  height: 30%;
   list-style-type: none;
   list-style: none;
   border: solid 5px #99E2EE;
@@ -19,10 +20,13 @@ a, .btn-success{
   background-color: #D4D3D1;
 }
 
-/*.btn .span1{
+.board{
+  display: block;
+  margin: 20px;
+  width: 70%;
   color: #CBB079;
   border: solid 5px silver;
-  background-color: #D4D3D1;
+  background-color: white;
   font: italic 40px Georgia;
 }
 

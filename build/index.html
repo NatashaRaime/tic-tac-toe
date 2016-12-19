@@ -1,59 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="en">
 <head>
-  <title>Tic-Tac-Toe</title>
   <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href='http://cdn.foundation5.zurb.com/foundation.css' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="../css/foundation.css">
-  <link rel="stylesheet" href="../css/app.css">
+
+  <title>Tic-Tac-Toe</title>
+  <meta name="tic-tac-toe" content="javascript">
+  <meta name="natasha">
+  <nav>
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="stylesheet" href="http://cdn.foundation5.zurb.com/foundation.css">
+</nav>
 </head>
-<body>
+<body class= "containter">
+<div class="title">
+  <h1 id="tic-tac-toe">Tic-Tac-Toe</h1>
+</div>
+<div class= "playersLine"
+  <h2 class="player1"></h2>
+    <h2 class="player2"></h2>
+  </div>
 
-
-  <div id="tic-tac-toe">
-    <div class="Game application">
-      <div class="row">
-        <h1 class="Game">Tic Tac Toe</h1>
-        <div class="winning">
-          <div class="input-prepend input-append">
-            <span class="add-on win_text">O   won</span><strong id="o_win" class="win_times add-on">0</strong><span class="add-on">time(s)</span>
-          </div>
-          <div class="input-prepend input-append">
-            <span class="add-on win_text">X   won</span><strong id="x_win" class="win_times add-on">0</strong><span class="add-on">time(s)</span>
-          </div>
-
-        </div>
-
-
-
-      </div>
-      <ul class="row" id="game">
-        <li id="one" class="btn board" >+</li>
-        <li id="two" class="btn board">+</li>
-        <li id="three" class="btn board">+</li>
-        <li id="four" class="btn board">+</li>
-        <li id="five" class="btn board">+</li>
-        <li id="six" class="btn board">+</li>
-        <li id="seven" class="btn board">+</li>
-        <li id="eight" class="btn board">+</li>
-        <li id="nine" class="btn board">+</li>
-      </ul>
-      <div class="clr">&nbsp;</div>
-      <div class="row"><a href="#" id="reset" class="small-hollow-btn btn-success btn">Restart</a></div></div>
+  <div class="board">
+    <div class="row">
+      <div class="small-4 columns square btn" data-id="1">___</div>
+      <div class="small-4 columns square btn" data-id="2">___</div>
+      <div class="small-4 columns square btn" data-id="3">___</div>
     </div>
-    <section class="scripts">
-  <script src="https://cdn.jsdelivr.net/foundation/6.3.0/foundation.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.1.1.js" type="text/javascript"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="../src/game.js" type="text/javascript"></script>
-  <script src="../src/player.js" type="text/javascript"></script>
-  <script src="../src/board.js" type="text/javascript"></script>
-  <script src="../app.bundle.js" charset="utf-8"></script>
-  <script src="../css/app.css" type="text/css"></script>
-  <script src="src/app.js"></script>
-</section>
-
-  </body>
-  </html>
+    <div class="row">
+      <div class="small-4 columns square btn" data-id="4">___</div>
+      <div class="small-4 columns square btn" data-id="5">___</div>
+      <div class="small-4 columns square btn" data-id="6">___</div>
+    </div>
+    <div class="row">
+      <div class="small-4 columns square btn" data-id="7">___</div>
+      <div class="small-4 columns square btn" data-id="8">___</div>
+      <div class="small-4 columns square btn" data-id="9">___</div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-2.2.2.min.js" integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
+  <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+  <script>

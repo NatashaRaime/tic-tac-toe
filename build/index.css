@@ -1,0 +1,32 @@
+h1#tic-tac-toe{
+  background-color: white;
+  margin: 20px 20%;
+  font: 40px Georgia;
+}
+
+.btn:hover{
+  color: black;
+  border: 5px;
+  border-color: deepskyblue;
+  font: italic 15px Georgia;
+}
+
+.square.btn{
+  display: block;
+  width: 100%;
+  height: 100%;
+  list-style-type: none;
+  list-style: none;
+  border: solid 5px #99E2EE;
+  font: italic 15px serif;
+  background-color: #D4D3D1;
+}
+
+.board{
+  height: 50%;
+  width: 75%;
+  margin: 12%;
+  display: inline-block;
+  background: deepskyblue;
+  border: solid 5px silver;
+}
