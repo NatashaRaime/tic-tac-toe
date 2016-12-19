@@ -1,31 +1,32 @@
 h1#tic-tac-toe{
   background-color: white;
+  list-style-type: none;
+  font: 50px Georgia;
+  list-style: none;
   margin: 20px 20%;
-  font: 40px Georgia;
+
 }
 
-.btn:hover{
-  color: black;
+.square.btn:hover{
   border: 5px;
   border-color: deepskyblue;
-  font: italic 15px Georgia;
 }
 
 .square.btn{
+  font: 70px Georgia;
+  margin: 0.15%;
   display: block;
-  width: 100%;
-  height: 100%;
-  list-style-type: none;
-  list-style: none;
+  width: 33%;
+  height: 33%;
   border: solid 5px #99E2EE;
-  font: italic 15px serif;
   background-color: #D4D3D1;
+  color: #D4D3D1;
 }
 
 .board{
-  height: 50%;
+  height: 45%;
   width: 75%;
-  margin: 12%;
+  margin: 13%;
   display: inline-block;
   background: deepskyblue;
   border: solid 5px silver;
