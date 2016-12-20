@@ -1,48 +1,43 @@
-import Game from 'game';
+const PlayerView = Backbone.View.extend({
+  initialize: function(options){
+    this.form = this.$('.player');
+    this.input = {
+      player: this.$('.player input[name="player"]'),
+    };
 
 
-var Player = function(){
-  //every play that has happened deducted here (is this necessary?)
-  // this.name = "";
-  this.mark = "";  // x for p1 or o for p2
-  this.p2plays = []; // track plays
-  this.score = 0; // winning?
-  this.turns = 0; // how many times have you played
-  this.turn = false; //is it your turn or the other players
-  if(this.turns > 2){
-     if (this.plays.includes [[0][0]], [[0][1]], [[0][2]]){
-     winStatus = true;
-       if (this.plays.includes [[1][0]]){
-       }
-     }
-   }
-};
+    this.listenTo(this.model, 'btn-save', this.addPlayer);
+    this.listenTo(this.model, 'change', this.render);
+    this.listenTo(this.model, 'exit', this.clearPlayers);
+  },
+  render: function(){
+      this.$el.empty();
+      this.playerTemplate = _.template($('#tmpl-players').html());
+      this.players = [];
+      this.model.forEach(function(newPlayer) {
+        this.addPlayer(newPlayer);
+      }, this);
+    },
 
 
-//this could be useful for an automated player later
-Player.prototype.shuffle = function(){
-    for (let i = this.possiblePlays.length; i; i--){
-        let j = Math.floor(Math.random() * i);
-        [this.plays[i - 1], this.possiblePlays[j]] = [this.possiblePlays[j], this.possiblePlays[i - 1]];
-    }
-    console.log(this.possiblePlays);
-    return this.possiblePlays;
-};
+  events: {
+  'click .btn-save': 'createPlayer',
+  'click .btn-clear': 'clearPlayers',
+},
 
+  clearPlayer: function(player){
+  this.players = [];
+  },
 
-const P1 = new Player();
-const P2 = new Player();
+  addPlayer: function(player) {
+  var playerName = new PlayerView({
+    model: player,
+    el:this.$el,
+    template: this.playerTemplate
+  });
+  this.players.push(playerName);
+  this.render();
+},
 
-
-
-
-
-
-
-
-
-
-
-
-//////////////////////
-export default Player;
+});
+export default PlayerView;

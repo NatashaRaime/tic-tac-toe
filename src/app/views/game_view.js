@@ -1,131 +1,84 @@
-import Player from 'player';
-import Board from 'board';
+import $ from 'jquery';
+import Backbone from 'backbone';
+import _ from 'underscore';
+import Game from 'app/collections/game';
+import PlayerView from 'app/views/player_view';
+import Player from 'app/models/player';
 
-// var prompt = require('prompt');
-// prompt.start();
+const GameView = Backbone.View.extend({
+  initialize: function(options){
+    this.player1 = player1;
+    this.player2 = player2;
+    this.currentPlayer = "X";
+    this.form = this.$('.form');
+    this.input = {
+      player1: this.$('.form input[name="player1"]'),
+      player2: this.$('.form input[name="player2"]')
+    };
+    this.listenTo(this.model, 'play', this.playGame);
+    this.listenTo(this.model, 'exit', this.render);
+  },
 
-// constructor will start the game
-var Game = function(){
-  this.gameBoard = new Board();
-
-  var name1 = "Player 1";
-  var name2 = "Player 2";
-
-  this.nextPlay = true;
-  this.currentHash = {};
-
-  if (name1!== null){
-    //made P1 and P2 const within the player file
-    this.P1 = new Player();
-    this.P1.name = name1;
-    this.P1.mark = "X";
-    this.P1.turn = true;
-    // document.getElementById("welcome").innerHTML =
-    // "Hello " + name1 + "! You are X's";
-  }
-  if (name2!== null){
-    this.P2 = new Player();
-    this.P2.name = name2;
-    this.P2.mark = "O";
-    // this.P2.turn = false;
-    // document.getElementById("welcome").innerHTML =
-    // "Hello " + name2 + "! You are O's";
-  }
-};
-
-Game.prototype.validInput = function () { //other things than a location already used can cause an invalid input, but not covered yet
-  if (this.gameBoard.spaces[this.loc1][this.loc2]!=='_')   { return false;
-    // validInput(); // earlier we were prompting for input here this made sense
-  } else {
-    return true;
-  }
-};
-
-  Game.prototype.playerAction = function () {
-    if (this.validInput()) {
-      if (this.P1.turn === true){
-        this.P1.turn = false;
-        this.P2.turn = true;
-        this.gameBoard.spaces[this.loc1][this.loc2] = this.P1.mark;
-
-      }
-        else if(this.P2.turn === true){
-        this.P2.turn = false;
-        this.P1.turn = true;
-        this.gameBoard.spaces[this.loc1][this.loc2] = this.P2.mark;
-      }
-      // checkStatus();
-    } else {
-        return console.error('invalid input from player');
+  render: function() { },
+  events: {
+    'click .play': 'playGame',
+    'click .exit': 'exitGame',
+    'click #1': 'markBox',
+    'click #2': 'markBox',
+    'click #3': 'markBox',
+    'click #4': 'markBox',
+    'click #5': 'markBox',
+    'click #6': 'markBox',
+    'click #7': 'markBox',
+    'click #8': 'markBox',
+    'click #9': 'markBox',
+  },
+  win: function(){
+    if(this.plays > 2){
+      if (this.spaces[[0][0]] == this.mark && this.spaces[[1][1]]== this.mark && this.spaces[[2][2]] == this.mark || this.spaces[[2][0]] == this.mark && this.spaces[[1][1]] == this.mark && this.spaces[[0][2]] == this.mark)
+      winMatch();
+      this.score += 1;
     }
+    for (let i = 0; i < 4; i++){
+      if (this.spaces[[i][0]] == this.mark && this.spaces[[i][1]] == this.mark && this.spaces[[i][2]] == this.mark || this.spaces[[0][i]] == this.mark && this.spaces[[1][i]] == this.mark && this.spaces[[2][i]] == this.mark) {
+        return true;
+      }
+      if(true){
+        winMatch();
+        this.score += 1;
+      }}},
+
+  turn: function() {
+     if(this.currentPlayer == "X") {
+       this.currentPlayer = "O";
+     } else {
+       this.currentPlayer = "X";
+     }
+   },
+
+  getInput: function() {
+  var players = {
+    player1: this.input.player1.val(),
+    player2: this.input.player2.val()
   };
+  return players;
+},
 
-  Game.prototype.restart = function(){
-  //refresh the board, clear the plays
-  this.gameBoard = new Board();
+  clearInput: function(event) {
+    this.input.player.val('');
+  },
 
-  this.currentHash = {};
-  this.P1.turn = true;
-  this.P2.turn = false;
-
-  this.P1.mark = "X";
-  this.P2.mark = "O";
-};
-
-Game.prototype.endGame = function(){
-  //add to this for deciding if the game has been won
-  if (this.plays.includes()){
-    this.matchWin = true;
-  }
-};
-
-// Game.prototype.exit = function () {
-//   //refresh the players, refresh board refresh game
-// };
-
-// Game.prototype.checkStatus = function () {
-//   if (this.currentHash === {}) {
-//     for (var i = 0; i < this.gameBoard.spaces.length; i++) {
-//       for (var j = 0; j < this.gameBoard.spaces[i].length; j++) {
-//         currentHash[i.toString() + j.toString()] = this.gameBoard.spaces[i][j];
-//       }
-//     }
-//   } else {
-//     // currentHash[this.loc1 + this.loc2] // we don't have a current player
-//   }
-
-  // a winning array 0, 1, 2, might have been played 2, 0, 1 - so we should use a hash
-
-  // switch(this.gameBoard.spaces) {
-  //   case []:
-  //   case []: // two options
-  //       // tie
-  //       //code block
-  //       break;
-  //   case n:
-  //       // winner
-  //       // code block
-  //       break;
-  //   default:
-  //       //continue game
-  // }
-
-  // //toggle status
-  // if(this.match === true){
-  //   endGame();
-  // }
-  // if(this.tie === true){
-  //   newGame();
-  // }
-  // if(this.nextPlay === true){
-  //     playerAction();
-  // }
+  markBox: function(event) {
+      var div = $(this);
+        if(div == '_') {
+          div = this.currentPlayer;
+          turn();
+      } else {
+        messages.html('This box is already checked.');
+      }
+    }
+});
 
 
-Game.prototype.fillName = function () {
-  //show players names on the game page
-  document.getElementById('name1').innerHTML = this.name1;
-  document.getElementById('name2').innerHTML = this.name2;
-};
 
-export default Game;
+  export default GameView;

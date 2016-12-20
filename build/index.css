@@ -1,0 +1,48 @@
+
+h1#tic-tac-toe, section#playGame#tic-tac-toe{
+  background-color: white;
+  list-style-type: none;
+  font: 60px Georgia;
+  list-style: none;
+  margin: 8%;
+}
+
+.square.btn:hover{
+  border: 5px;
+  color: deepskyblue;
+  background-color: deepskyblue;
+}
+
+.square.btn{
+  font: 70px Georgia;
+  margin:0.1%;
+  display: block;
+  width: 33%;
+  height: 100%;
+  border: solid 10px #99E2EE;
+  background-color: white;
+  color: white;
+}
+
+.board{
+  height: 48%;
+  width: 70%;
+  margin: 10%;
+  display: inline-block;
+  background: deepskyblue;
+  border: solid 5px silver;
+}
+
+.button.playGame{
+  width: 30%;
+  height: 45%;
+  margin: 5%;
+  display: inline-block;
+  background: deepskyblue;
+  border: solid 5px cyan;
+}
+
+.button.playGame:hover{
+  background-color: cyan;
+  border: solid 5px grey;
+}
